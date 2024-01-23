@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
+import RegistrationForm from "./Components/FormImplementation/RegistrationForm";
+import NewTaskList from "./Components/NewTaskImplementation/NewTaskList";
+import AnimationBox from "./Components/parentComponent";
+import routes from "./routes";
 
 function App() {
+  // const { username } = useParams();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <AnimationBox></AnimationBox> */}
+      {/* <NewTaskList></NewTaskList> */}
+      {/* <Router>
+        <Routes>
+          <Route path="/" element={<AnimationBox />} />
+          <Route path="/about/:username" element={<NewTaskList />} />
+        </Routes>
+      </Router> */}
+
+      <Router>
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} {...route} />
+          ))}
+        </Routes>
+      </Router>
+
+      {/* <RegistrationForm></RegistrationForm> */}
+    </>
   );
 }
 
